@@ -89,6 +89,7 @@ app.get("/contactlist", passport.authenticate('jwt', { session: false }), functi
   res.status(200).json({message: "contactlist ...Success!"});
 });
 
-app.listen(3000, function() {
+var port = process.env.PORT || 8080;
+app.listen(port, function() {
   console.log("Express running");
 });
