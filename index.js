@@ -30,6 +30,7 @@ jwtOptions.secretOrKey = 'tasmanianDevil';
 
 var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
 
+  console.log(jwt_payload);
   console.log('payload received', jwt_payload);
   // usually this would be a database call:
   var user = users[_.findIndex(users, {id: jwt_payload.id})];
@@ -54,7 +55,13 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json())
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// app.get("/", function(req, res) {
+//   var header=req.headers['authorization'];
+//   console.log(header);
+//   res.json({message: "Express is up!"});
+// });
 
 app.post("/token", function(req, res) {
   if(req.body.name && req.body.password){
@@ -82,12 +89,21 @@ app.post("/token", function(req, res) {
 });
 
 app.get("/userlist", passport.authenticate('jwt', { session: false }), function(req, res){
-  res.status(200).json({message: "userlist! Header......."});
+  res.json({message: "userlist! Header......."});
 });
 
 app.get("/contactlist", passport.authenticate('jwt', { session: false }), function(req, res){
-  res.status(200).json({message: "contactlist ...Success!"});
+  res.json({message: "contactlist ...Success!"});
 });
+
+app.get("/secretDebug",
+  function(req, res, next){
+    console.log(req.get('Authorization'));
+    next();
+  }, function(req, res){
+    res.json("debugging");
+});
+
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
