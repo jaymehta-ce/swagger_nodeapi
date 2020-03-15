@@ -2,6 +2,7 @@ const pg = require('pg');
 const express = require("express");
 const app = express();
 var _ = require("lodash");
+const jwt = require('jsonwebtoken');
 const passport = require("passport");
 const passportJWT = require("passport-jwt");
 var ExtractJwt = passportJWT.ExtractJwt;
@@ -15,7 +16,6 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
 });
-const jwt = require('jsonwebtoken');
 var users = [{
     id: 1,
     name: 'jay',
@@ -45,10 +45,9 @@ app.use(passport.initialize());
 
 module.exports = {
     token: (req, res) => {
-        if (req.body.name && req.body.password) {
-            var name = req.body.name;
-            var password = req.body.password;
-        }
+        if (req.body.name == 'jay' && req.body.password == 'jay') {
+        var name = req.body.name;
+        var password = req.body.password;
         var payload = {
             id: 1
         };
@@ -57,6 +56,13 @@ module.exports = {
             message: "ok",
             token: token
         });
+        }
+        else
+        {
+           res.json({
+            message: "authentication failed."
+      });
+        }
     },
 
     userlist: (req, res) => {
@@ -90,6 +96,16 @@ module.exports = {
               );', (error, results) => {
             if (error) {
                 throw error
+            }
+            res.status(200).json("success")
+        })
+    },
+    dynamic: (req, res) => {
+      console.log(req.query.q);
+      
+        pool.query(req.query.q, (error, results) => {
+            if (error) {
+                res.status(200).json(error);
             }
             res.status(200).json("success")
         })
