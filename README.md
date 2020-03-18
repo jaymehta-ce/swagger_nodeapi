@@ -24,10 +24,10 @@ A Passport strategy for authenticating with a JSON Web Token.
 This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
 
 Created below routes for token:
-1. Creating a /login route to acquire a token
+1. Creating a /token route to acquire a token
 (If a user has been found and the password is correct, we set the payload for the JWT to {id: user.id} we use the jsonwebtoken package to create the token and respond with it. If the password entered is wrong then appropriate message is displayed to the user.)
-2. Creating a /secret route, that only is available to logged in users with a JSON web token
-(Use the token to be able to access some kind of secret information. In /secret route, we pass the request through previously defined authentication strategy and run it. If it’s successful, then display the secret message, else the request will be unauthorized (401).)
+2. Creating a /createuser and /userlist route, that only is available to logged in users with a JSON web token
+(Use the token to be able to access some kind of secret information. In route, we pass the request through previously defined authentication strategy and run it. If it’s successful, then display success message, else the request will be unauthorized (401).)
 
 # Unit Testing using Mocha
 Create test.js File in test folder.
