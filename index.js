@@ -4,9 +4,6 @@ require('dotenv')
 const route = require("./routes/route");
 var app = express();
  var mocha = require('mocha')
-  var describe = mocha.describe
-  var it = mocha.it
-  var assert = require('chai').assert
 console.log("mocha.....")
 
 
