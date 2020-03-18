@@ -34,6 +34,7 @@ This module lets you authenticate endpoints using a JSON web token. It is intend
 # Configuration variable
 Postgres database is used to store the user information and its configuration will be loaded from .env file using "dotenv" npm module.
 ```
+NODE_ENV=<development/production>
 DB_USER=<value>
 DB_HOST=<value>
 DB_DATABASE=<value>
@@ -43,7 +44,7 @@ JWT_SECRETKEY=<value>
 ```
 
 # Unit Testing using Mocha
-Create test.js File in test folder.
+Mocha is a javascript testing framework used in node.js. Create test.js file in test folder.
 ```
 describe('check', function() {
     it('swagger file exists or not', function(done) {
@@ -57,7 +58,8 @@ describe('check', function() {
     })
 ```
 
-# Run Test on starting of project
+# Run test command
+The below command will be run before the starting of project.
 ```
 mocha test/test.js
 ```
