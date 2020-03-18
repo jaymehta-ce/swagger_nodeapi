@@ -29,6 +29,17 @@ Created below routes for token:
 2. Creating a /createuser and /userlist route, that only is available to logged in users with a JSON web token
 (Use the token to be able to access some kind of secret information. In route, we pass the request through previously defined authentication strategy and run it. If it’s successful, then display success message, else the request will be unauthorized (401).)
 
+# Configuration variable
+"dotenv" npm module helps to load environment variables from a .env file into process.env.
+```
+DB_USER=<value>
+DB_HOST=<value>
+DB_DATABASE=<value>
+DB_PASSWORD=<value>
+DB_PORT=5432
+JWT_SECRETKEY=<value>
+```
+
 # Unit Testing using Mocha
 Create test.js File in test folder.
 ```
