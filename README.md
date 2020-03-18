@@ -4,7 +4,7 @@ In this demo, I have created an authentication with JSON Web Tokens. I have sent
 
 # Demo URL
 
-[a link](https://swagger-nodeapi.herokuapp.com/api)
+[https://swagger-nodeapi.herokuapp.com/api](https://swagger-nodeapi.herokuapp.com/api)
 
 # Swagger UI Express
 This module allows you to serve auto-generated swagger-ui generated API docs from express, based on a swagger.json file. The result is living documentation for your API hosted from your API server via a route.
