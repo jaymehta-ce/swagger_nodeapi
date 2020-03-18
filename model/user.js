@@ -1,14 +1,23 @@
+// user.js file
+
+// pg - use Postgres database using pg module.
 const pg = require('pg');
 const express = require("express");
 const app = express();
 var _ = require("lodash");
+
+// we use the jsonwebtoken package to create the token and respond with it
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
+
+// passport-jwt - This module lets you authenticate endpoints using a JSON web token.
 const passportJWT = require("passport-jwt");
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
 pg.defaults.ssl = true;
-const Pool = require('pg').Pool
+const Pool = require('pg').Pool;
+
+// creating pool by passing paramerer from the .env file
 const pool = new Pool({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
@@ -43,11 +52,18 @@ var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
 passport.use(strategy);
 app.use(passport.initialize());
 
+// created below functions:
+// 1. token function will generate the JWT token
+// 2.createuser function will create new user in database with email validation.
+// 3.userlist function will return list of all the user details from database.
+// 4.create function will create "user" table in the database by query.
+// 5.dynamic function will helps to run dynamic query.
 module.exports = {
     token: (req, res) => {
         if (req.body.name == 'jay' && req.body.password == 'jay') {
-        var name = req.body.name;
-        var password = req.body.password;
+            var name = req.body.name;
+            var password = req.body.password;
+        
         var payload = {
             id: 1
         };
@@ -78,9 +94,19 @@ module.exports = {
         const {
             firstname,
             lastname,
-            email
+            email,
+            phone
         } = req.body;
-        pool.query('INSERT INTO users (firstname, lastname, email) VALUES ($1, $2, $3)', [firstname, lastname, email], (error, results) => {
+      const emailToValidate = email;
+      const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      console.log(emailRegexp.test(emailToValidate))
+      if(!emailRegexp.test(emailToValidate))
+      {
+         console.log("emailToValidate") 
+         res.status(201).send("Email is not valid.");
+         return;
+      }
+        pool.query('INSERT INTO users (firstname, lastname, email, phone) VALUES ($1, $2, $3, $4)', [firstname, lastname, email,phone], (error, results) => {
             if (error) {
                 res.status(201).send("Error in creating new user.")
             }
@@ -102,8 +128,7 @@ module.exports = {
     },
     dynamic: (req, res) => {
       console.log(req.query.q);
-      
-        pool.query(req.query.q, (error, results) => {
+      pool.query(req.query.q, (error, results) => {
             if (error) {
                 res.status(200).json(error);
             }
