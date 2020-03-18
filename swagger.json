@@ -73,8 +73,13 @@
             "name": "email",
             "in": "formData",
             "type": "string",
+            "required": "true",
+            "format": "email"
+          },
+            "name": "phone",
+            "in": "formData",
+            "type": "string",
             "required": "true"
-          }
         ],
         "responses": {}
       }
