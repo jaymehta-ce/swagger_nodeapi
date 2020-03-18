@@ -18,7 +18,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 ```
-# passport-jwt
+# Passport & JWT
 
 A Passport strategy for authenticating with a JSON Web Token.
 This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
