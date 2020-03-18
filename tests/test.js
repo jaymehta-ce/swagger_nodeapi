@@ -2,7 +2,7 @@
   var describe = mocha.describe
   var it = mocha.it
   var assert = require('chai').assert
-
+console.log("mocha.....")
   describe('#indexOf()', function() {
     it('should return -1 when not present', function() {
       assert.equal([1,2,3].indexOf(4), -1)
