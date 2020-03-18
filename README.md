@@ -1,6 +1,10 @@
 # Node API using Swagger, Passport, JWT, Postgres and Mocha
 
-In this demo, I have created an authentication with JSON Web Tokens. I have sent the jwt with every request, meaning that we don’t rely on sessions, but simply put the token on every request we make to the API. This way we don’t have to worry about cookies, but we can save it in localStorage or other places on the frontend. I have used passport-jwt with express framework.
+In this demo, I have created an authentication with JSON Web Tokens. I have sent the jwt with every request, meaning that we don’t rely on sessions, but simply put the token on every request we make to the API. I have used passport-jwt with express framework, mocha testing framework for unit testing, Postgres database for storing/retriving of user and HEROKU for deployment.
+
+# Demo URL
+
+[a link](https://swagger-nodeapi.herokuapp.com/api)
 
 # Swagger UI Express
 This module allows you to serve auto-generated swagger-ui generated API docs from express, based on a swagger.json file. The result is living documentation for your API hosted from your API server via a route.
