@@ -9,8 +9,7 @@
   }
 describe('check', function() {
     it('swagger file exists or not', function() {
-      const path = '../../swagger1.json'
-      try {
+      const path = '../../swagger1.json';
         if (fs.existsSync(path)) {
            done();
          }
@@ -18,8 +17,5 @@ describe('check', function() {
        {
         assert.throw(iThrowError('Swagger file not found'), Error, 'Error thrown');
        }
-      } catch(err) {
-        console.error(err)
-      }
     })
   })
