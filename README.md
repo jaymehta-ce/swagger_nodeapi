@@ -23,11 +23,13 @@ app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 A Passport strategy for authenticating with a JSON Web Token.
 This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
 
-Created below routes for token:
-1. Creating a /token route to acquire a token
-(If a user has been found and the password is correct, we set the payload for the JWT to {id: user.id} we use the jsonwebtoken package to create the token and respond with it. If the password entered is wrong then appropriate message is displayed to the user.)
-2. Creating a /createuser and /userlist route, that only is available to logged in users with a JSON web token
-(Use the token to be able to access some kind of secret information. In route, we pass the request through previously defined authentication strategy and run it. If it’s successful, then display success message, else the request will be unauthorized (401).)
+# API routes
+
+| Sr. No  |Route   |Method   |Description |
+|---|---|---|---|
+|  1 |/token  | POST  | Generate JWT token by entering username and password. If user is authenticated successfully, we set the payload for the JWT and "jsonwebtoken" module is used to create the token. If the password entered is wrong then appropriate message is displayed to the user.|
+|  2 |/createuser   | POST  | Create new user in database after successful authentication. |
+|  3 |/userlist   | GET  | View list of users from database after successful authentication. |
 
 # Configuration variable
 Postgres database is used to store the user information and its configuration will be loaded from .env file using "dotenv" npm module.
