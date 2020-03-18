@@ -7,9 +7,8 @@ function iThrowError(msg) {
 describe('check', function() {
     it('swagger file exists or not', function(done) {
         const path = '././swagger.json';
-        console.log("--------------------------");
-        console.log(fs.existsSync(path));
         if (fs.existsSync(path)) {
+            console.log("success");
             done();
         } else {
             assert.throw(iThrowError('Swagger file not found'), Error, 'Error thrown');
