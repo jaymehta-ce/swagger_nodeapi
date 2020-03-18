@@ -7,11 +7,11 @@ var app = express();
 console.log("mocha.....")
 
 
-  describe('#indexOf()', function() {
-    it('should return -1 when not present', function() {
-      assert.equal([1,2,3].indexOf(4), -1)
-    })
-  })
+//   describe('#indexOf()', function() {
+//     it('should return -1 when not present', function() {
+//       assert.equal([1,2,3].indexOf(4), -1)
+//     })
+//   })
 
 // parse application/x-www-form-urlencoded
 // for easier testing with Postman or plain HTML forms
