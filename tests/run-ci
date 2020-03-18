@@ -8,5 +8,5 @@
 #    but a push to the master branch would trigger production tests as well as CI.
 
 # if we're on the master branch, then run production tests (i.e. codecheck)
-const mochapkg = require('../test');
+const mochapkg = require('./test');
 mochapkg.run();
