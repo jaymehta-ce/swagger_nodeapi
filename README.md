@@ -1,4 +1,4 @@
-# swagger_nodeapi
+# Node API using Swagger, Passport, JWT, Postgres and Mocha
 
 In this demo, I have created an authentication with JSON Web Tokens. I have sent the jwt with every request, meaning that we don’t rely on sessions, but simply put the token on every request we make to the API. This way we don’t have to worry about cookies, but we can save it in localStorage or other places on the frontend. I have used passport-jwt with express framework.
 
