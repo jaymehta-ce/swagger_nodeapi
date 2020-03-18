@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tests/run-ci && node index.js"
+    "start": "node tests/test.js && node index.js"
   },
   "author": "",
   "license": "ISC",
