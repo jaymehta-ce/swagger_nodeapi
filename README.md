@@ -30,7 +30,7 @@ Created below routes for token:
 (Use the token to be able to access some kind of secret information. In route, we pass the request through previously defined authentication strategy and run it. If it’s successful, then display success message, else the request will be unauthorized (401).)
 
 # Configuration variable
-"dotenv" npm module helps to load environment variables from a .env file into process.env.
+Postgres database is used to store the user information and its configuration will be loaded from .env file using "dotenv" npm module.
 ```
 DB_USER=<value>
 DB_HOST=<value>
@@ -59,3 +59,6 @@ describe('check', function() {
 ```
 mocha test/test.js
 ```
+
+# Deployment on HEROKU
+Heroku is a cloud platform as a service (PaaS) supporting several programming languages. It also provides custom buildpacks with which the developer can deploy apps in any other language.
