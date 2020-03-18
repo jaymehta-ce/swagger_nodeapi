@@ -6,7 +6,7 @@ function iThrowError(msg) {
 }
 describe('check', function() {
     it('swagger file exists or not', function() {
-        const path = '../../swagger.json';
+        const path = '../swagger.json';
         if (fs.existsSync(path)) {
             done();
         } else {
