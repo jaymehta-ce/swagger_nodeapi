@@ -1,8 +1,10 @@
- var mocha = require('mocha')
-  var describe = mocha.describe
-  var it = mocha.it
-  var assert = require('chai').assert;
-      const fs = require('fs');
+//  var mocha = require('mocha')
+//   var describe = mocha.describe
+//   var it = mocha.it
+//   var assert = require('chai').assert;
+
+const assert = require('assert');
+const fs = require('fs');
 
   function iThrowError(msg) {
      throw new Error(msg);
