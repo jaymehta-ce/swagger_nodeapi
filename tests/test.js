@@ -5,8 +5,17 @@
 console.log("mocha.....")
 
 
-  describe('#indexOf()', function() {
-    it('should return -1 when not present', function() {
-      assert.equal([1,2,3].indexOf(4), -1)
+describe('check', function() {
+    it('swagger file exists or not', function() {
+      const fs = require('fs')
+      const path = '../../swagger.json'
+      try {
+        if (fs.existsSync(path)) {
+          //file exists
+         assert.throw(iThrowError('Swagger file not found'), Error, 'Error thrown');
+        }
+      } catch(err) {
+        console.error(err)
+      }
     })
   })
