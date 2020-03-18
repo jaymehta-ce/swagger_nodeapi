@@ -7,14 +7,6 @@
 # -- For example a pull request push would trigger CI tests only
 #    but a push to the master branch would trigger production tests as well as CI.
 
-# this command exits the script with non-zero status if any test fails (Heroku CI classes this as test failure)
-set -e
-
-echo $HEROKU_TEST_RUN_BRANCH
-
 # if we're on the master branch, then run production tests (i.e. codecheck)
-npm run checkmarx
-echo "Run CI tests..."
-
-const mochapkg = require('../mocha');
+const mochapkg = require('../test');
 mochapkg.run();
