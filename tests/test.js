@@ -4,11 +4,10 @@
   var assert = require('chai').assert
 console.log("mocha.....")
 
-
 describe('check', function() {
     it('swagger file exists or not', function() {
       const fs = require('fs')
-      const path = '../../swagger.json'
+      const path = '../../swagger1.json'
       try {
         if (fs.existsSync(path)) {
           //file exists
